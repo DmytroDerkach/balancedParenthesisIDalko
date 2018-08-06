@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<atlassian-plugin key="${atlassian.plugin.key}" name="${project.name}" plugins-version="2">
+  <plugin-info>
+    <description>${project.description}</description>
+    <version>${project.version}</version>
+    <vendor name="${project.organization.name}" url="${project.organization.url}"/>
+    <param name="plugin-icon">images/pluginIcon.png</param>
+    <param name="plugin-logo">images/pluginLogo.png</param>
+  </plugin-info>
+
+  <!-- add our i18n resource -->
+  <resource type="i18n" name="i18n" location="balancedParenthesis"/>
+
+  <!-- add our web resources -->
+  <web-resource key="balancedParenthesis-resources" name="balancedParenthesis Web Resources">
+    <dependency>com.atlassian.auiplugin:ajs</dependency>
+    <resource type="download" name="balancedParenthesis.css" location="/css/balancedParenthesis.css"/>
+    <resource type="download" name="balancedParenthesis.js" location="/js/balancedParenthesis.js"/>
+    <resource type="download" name="images/" location="/images"/>
+    <context>balancedParenthesis</context>
+  </web-resource>
+
+  <customfield-type name="Simple String Custom Field" i18n-name-key="simple-string-custom-field.name"
+                    key="simple-string-custom-field" class="com.atlassian.jira.customfields.impl.SimpleStringCustomField">
+    <description key="simple-string-custom-field.description">Balanced Parenthesis String Custom Field Plugin</description>
+    <resource name="view" type="velocity" location="/templates/customfields/simple-string-custom-field/view.vm"/>
+    <resource name="edit" type="velocity" location="/templates/customfields/simple-string-custom-field/edit.vm"/>
+  </customfield-type>
+</atlassian-plugin>
